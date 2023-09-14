@@ -1,0 +1,25 @@
+def groupAnagrams(strs):
+    # Create a dictionary to store anagrams
+    anagram_dict = {}
+    
+    for word in strs:
+        # Sort the characters in the word
+        sorted_word = ''.join(sorted(word))
+        
+        # Check if the sorted word is already a key in the dictionary
+        if sorted_word in anagram_dict:
+            # If yes, append the original word to the list of anagrams
+            anagram_dict[sorted_word].append(word)
+        else:
+            # If no, create a new key with the sorted word and initialize the list
+            anagram_dict[sorted_word] = [word]
+    
+    # Collect the values (lists of anagrams) from the dictionary
+    grouped_anagrams = list(anagram_dict.values())
+    
+    return grouped_anagrams
+
+# Example usage:
+input_strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+result = groupAnagrams(input_strs)
+print(result)
